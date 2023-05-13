@@ -1,0 +1,46 @@
+CREATE TABLE LECTURE (
+                         ID INT AUTO_INCREMENT PRIMARY KEY,
+                         Title VARCHAR(50)  NOT NULL,
+                         THEMATIC_PATH_ID VARCHAR  NOT NULL,
+) ;
+
+
+
+CREATE TABLE THEMATIC_PATH (
+                              ID INT PRIMARY KEY,
+                              description VARCHAR(100)  NOT NULL,
+) ;
+
+
+CREATE TABLE RESERVATION (
+                             ID INT PRIMARY KEY,
+                             USER_ID INT NOT NULL,
+                             LECTURE_ID INT NOT NULL,
+) ;
+
+
+CREATE TABLE USER (
+                        ID INT AUTO_INCREMENT PRIMARY KEY,
+                        login VARCHAR(20) NOT NULL,
+                        email VARCHAR(50) NOT NULL,
+                        CONSTRAINT USER_PK PRIMARY KEY (ID)
+) ;
+
+
+ALTER TABLE LECTURE ADD CONSTRAINT LECTURE_THEMATIC_PATH
+    FOREIGN KEY (THEMATIC_PATH_ID)
+        REFERENCES THEMATIC_PATH (ID);
+
+
+ALTER TABLE RESERVATION ADD CONSTRAINT RESERVATION_LECTURE
+    FOREIGN KEY (LECTURE_ID)
+        REFERENCES LECTURE (ID);
+
+
+ALTER TABLE RESERVATION ADD CONSTRAINT RESERVATION_USER
+    FOREIGN KEY (USER_ID)
+        REFERENCES USER (ID);
+
+
+
+
