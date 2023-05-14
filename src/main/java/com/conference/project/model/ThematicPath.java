@@ -9,7 +9,7 @@ import java.util.Collection;
 public class ThematicPath {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer pathId;
+    private Integer id;
     private String description;
 
     @OneToMany
@@ -23,12 +23,12 @@ public class ThematicPath {
         this.description = description;
     }
 
-    public Integer getPathId() {
-        return pathId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPathId(Integer id) {
-        this.pathId = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -39,10 +39,18 @@ public class ThematicPath {
         this.description = description;
     }
 
+    public Collection<Lecture> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(Collection<Lecture> lectures) {
+        this.lectures = lectures;
+    }
+
     @Override
     public String toString() {
         return "ThematicPath{" +
-                "pathId=" + pathId +
+                "pathId=" + id +
                 ", description='" + description + '\'' +
                 ", lectures=" + lectures +
                 '}';
@@ -55,12 +63,12 @@ public class ThematicPath {
 
         ThematicPath that = (ThematicPath) o;
 
-        return pathId != null ? pathId.equals(that.pathId) : that.pathId == null;
+        return id != null ? id.equals(that.id) : that.id == null;
     }
 
     @Override
     public int hashCode() {
-        return pathId != null ? pathId.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 
 }

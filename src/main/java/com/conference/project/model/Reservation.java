@@ -6,49 +6,44 @@ import jakarta.persistence.*;
 public class Reservation {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer resId;
-    private Integer customerId;
-    private Integer lectureId;
+    private Integer id;
 
+    @ManyToOne
+    private Customer customer;
+    @ManyToOne
+    private Lecture lecture;
 
     public Reservation() {
     }
 
-    public Reservation(Integer customerId, Integer lectureId) {
-        this.customerId = customerId;
-        this.lectureId = lectureId;
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getResId() {
-        return resId;
+    public void setId(Integer resId) {
+        this.id = resId;
     }
 
-    public void setResId(Integer resId) {
-        this.resId = resId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public Lecture getLecture() {
+        return lecture;
     }
 
-    public Integer getLectureId() {
-        return lectureId;
-    }
-
-    public void setLectureId(Integer lectureId) {
-        this.lectureId = lectureId;
+    public void setLecture(Lecture lecture) {
+        this.lecture = lecture;
     }
 
     @Override
     public String toString() {
         return "Reservation{" +
-                "resId=" + resId +
-                ", customerId=" + customerId +
-                ", lectureId=" + lectureId +
+                "resId=" + id +
                 '}';
     }
 
@@ -59,12 +54,12 @@ public class Reservation {
 
         Reservation that = (Reservation) o;
 
-        return resId != null ? resId.equals(that.resId) : that.resId == null;
+        return id != null ? id.equals(that.id) : that.id == null;
     }
 
     @Override
     public int hashCode() {
-        return resId != null ? resId.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 
 }

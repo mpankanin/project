@@ -9,28 +9,29 @@ import java.util.Collection;
 public class Lecture {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer lectureId;
+    private Integer id;
     private String title;
-    private Integer pathId;
 
     @OneToMany
     private Collection<Reservation> reservations = new ArrayList<>();
+
+    @ManyToOne
+    private ThematicPath thematicPath;
 
 
     public Lecture() {
     }
 
-    public Lecture(String title, Integer pathId) {
+    public Lecture(String title) {
         this.title = title;
-        this.pathId = pathId;
     }
 
-    public Integer getLectureId() {
-        return lectureId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLectureId(Integer lectureId) {
-        this.lectureId = lectureId;
+    public void setId(Integer lectureId) {
+        this.id = lectureId;
     }
 
     public String getTitle() {
@@ -41,20 +42,27 @@ public class Lecture {
         this.title = title;
     }
 
-    public Integer getPathId() {
-        return pathId;
+    public Collection<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setPathId(Integer pathId) {
-        this.pathId = pathId;
+    public void setReservations(Collection<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public ThematicPath getThematicPath() {
+        return thematicPath;
+    }
+
+    public void setThematicPath(ThematicPath thematicPath) {
+        this.thematicPath = thematicPath;
     }
 
     @Override
     public String toString() {
         return "Lecture{" +
-                "lectureId=" + lectureId +
+                "lectureId=" + id +
                 ", title='" + title + '\'' +
-                ", pathId=" + pathId +
                 '}';
     }
 
@@ -65,12 +73,12 @@ public class Lecture {
 
         Lecture lecture = (Lecture) o;
 
-        return lectureId != null ? lectureId.equals(lecture.lectureId) : lecture.lectureId == null;
+        return id != null ? id.equals(lecture.id) : lecture.id == null;
     }
 
     @Override
     public int hashCode() {
-        return lectureId != null ? lectureId.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 
 }

@@ -9,7 +9,7 @@ import java.util.Collection;
 public class Customer {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer customerId;
+    private Integer id;
     private String login;
     private String email;
 
@@ -25,12 +25,12 @@ public class Customer {
         this.email = email;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCustomerId(Integer id) {
-        this.customerId = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getLogin() {
@@ -49,10 +49,18 @@ public class Customer {
         this.email = email;
     }
 
+    public Collection<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Collection<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
-                "customerId=" + customerId +
+                "customerId=" + id +
                 ", login='" + login + '\'' +
                 ", email='" + email + '\'' +
                 ", reservations=" + reservations +
@@ -66,12 +74,12 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        return customerId != null ? customerId.equals(customer.customerId) : customer.customerId == null;
+        return id != null ? id.equals(customer.id) : customer.id == null;
     }
 
     @Override
     public int hashCode() {
-        return customerId != null ? customerId.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 
 }
