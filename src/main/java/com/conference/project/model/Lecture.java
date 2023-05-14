@@ -1,5 +1,7 @@
 package com.conference.project.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -12,10 +14,10 @@ public class Lecture {
     private Integer id;
     private String title;
 
-    @OneToMany
+    @OneToMany(mappedBy = "lecture") @JsonManagedReference
     private Collection<Reservation> reservations = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne @JsonBackReference
     private ThematicPath thematicPath;
 
 

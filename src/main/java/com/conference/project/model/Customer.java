@@ -1,5 +1,6 @@
 package com.conference.project.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class Customer {
     private String login;
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer") @JsonManagedReference
     private Collection<Reservation> reservations = new ArrayList<>();
 
 

@@ -57,7 +57,7 @@ public class BootStrapData implements CommandLineRunner {
         lecture33.setThematicPath(thematicPath3);
 
         thematicPath1.getLectures().addAll(Arrays.asList(lecture11, lecture12, lecture13));
-        thematicPath3.getLectures().addAll(Arrays.asList(lecture21, lecture22, lecture23));
+        thematicPath2.getLectures().addAll(Arrays.asList(lecture21, lecture22, lecture23));
         thematicPath3.getLectures().addAll(Arrays.asList(lecture31, lecture32, lecture33));
 
         lectureRepository.saveAll(Arrays.asList(lecture11, lecture12, lecture13, lecture21, lecture22, lecture23, lecture31, lecture32, lecture33));

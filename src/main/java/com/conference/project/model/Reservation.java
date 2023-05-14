@@ -1,5 +1,6 @@
 package com.conference.project.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,9 +9,9 @@ public class Reservation {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne @JsonBackReference
     private Customer customer;
-    @ManyToOne
+    @ManyToOne @JsonBackReference
     private Lecture lecture;
 
     public Reservation() {
