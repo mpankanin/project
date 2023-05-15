@@ -3,8 +3,6 @@ package com.conference.project.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-import java.util.Objects;
-
 @Entity
 public class Reservation {
 
@@ -57,7 +55,7 @@ public class Reservation {
 
         Reservation that = (Reservation) o;
 
-        return Objects.equals(id, that.id);
+        return id != null ? id.equals(that.id) : that.id == null;
     }
 
     @Override

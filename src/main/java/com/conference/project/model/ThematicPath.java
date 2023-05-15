@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Objects;
 
 @Entity
 public class ThematicPath {
@@ -66,7 +65,7 @@ public class ThematicPath {
 
         ThematicPath that = (ThematicPath) o;
 
-        return Objects.equals(id, that.id);
+        return id != null ? id.equals(that.id) : that.id == null;
     }
 
     @Override

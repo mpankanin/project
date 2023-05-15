@@ -7,7 +7,6 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Objects;
 
 @Entity
 public class Lecture {
@@ -78,7 +77,7 @@ public class Lecture {
 
         Lecture lecture = (Lecture) o;
 
-        return Objects.equals(id, lecture.id);
+        return id != null ? id.equals(lecture.id) : lecture.id == null;
     }
 
     @Override

@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Objects;
 
 @Entity
 public class Customer {
@@ -76,7 +75,7 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        return Objects.equals(id, customer.id);
+        return id != null ? id.equals(customer.id) : customer.id == null;
     }
 
     @Override

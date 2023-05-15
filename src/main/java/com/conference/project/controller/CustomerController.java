@@ -3,6 +3,7 @@ package com.conference.project.controller;
 
 
 import com.conference.project.model.Customer;
+import com.conference.project.model.CustomerLoginExistsException;
 import com.conference.project.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,6 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
-
     @GetMapping("/customers")
     public List<Customer> getCustomers(){
         return customerRepository.findAll();
@@ -25,13 +25,11 @@ public class CustomerController {
 
     @PostMapping("/customers")
     public Customer addCustomer(@RequestBody Customer theCustomer){
+
         if(customerRepository.findAll().stream().anyMatch(c -> Objects.equals(c.getLogin(), theCustomer.getLogin())))
-            return null;
-        else
-            return customerRepository.save(theCustomer);
+            throw new CustomerLoginExistsException("Login already exists - " + theCustomer.getLogin());
+        return customerRepository.save(theCustomer);
     }
-
-
 
 
 
