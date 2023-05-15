@@ -1,5 +1,6 @@
 package com.conference.project.bootstrap;
 
+import com.conference.project.model.Customer;
 import com.conference.project.model.Lecture;
 import com.conference.project.model.ThematicPath;
 import com.conference.project.repository.CustomerRepository;
@@ -13,6 +14,7 @@ import java.util.Arrays;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
+
 
     private final CustomerRepository customerRepository;
     private final LectureRepository lectureRepository;
@@ -62,6 +64,9 @@ public class BootStrapData implements CommandLineRunner {
 
         lectureRepository.saveAll(Arrays.asList(lecture11, lecture12, lecture13, lecture21, lecture22, lecture23, lecture31, lecture32, lecture33));
         thematicPathRepository.saveAll(Arrays.asList(thematicPath1, thematicPath2, thematicPath3));
+
+        Customer customer1 = new Customer("andrzej", "andrzej.martines@gmail.com");
+        customerRepository.save(customer1);
 
 
     }

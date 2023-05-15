@@ -5,22 +5,33 @@ package com.conference.project.controller;
 import com.conference.project.model.Customer;
 import com.conference.project.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
 public class CustomerController {
 
     @Autowired
-    private CustomerRepository customerRepository;
+    CustomerRepository customerRepository;
+
 
     @GetMapping("/customers")
     public List<Customer> getCustomers(){
         return customerRepository.findAll();
     }
+
+    @PostMapping("/customers")
+    public Customer addCustomer(@RequestBody Customer theCustomer){
+        if(customerRepository.findAll().stream().anyMatch(c -> Objects.equals(c.getLogin(), theCustomer.getLogin())))
+            return null;
+        else
+            return customerRepository.save(theCustomer);
+    }
+
+
 
 
 

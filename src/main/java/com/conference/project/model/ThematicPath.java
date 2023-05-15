@@ -1,10 +1,12 @@
 package com.conference.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class ThematicPath {
@@ -13,7 +15,7 @@ public class ThematicPath {
     private Integer id;
     private String description;
 
-    @OneToMany(mappedBy = "thematicPath") @JsonManagedReference
+    @OneToMany(mappedBy = "thematicPath") @JsonIgnore//@JsonManagedReference
     private Collection<Lecture> lectures = new ArrayList<>();
 
 
@@ -64,7 +66,7 @@ public class ThematicPath {
 
         ThematicPath that = (ThematicPath) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return Objects.equals(id, that.id);
     }
 
     @Override

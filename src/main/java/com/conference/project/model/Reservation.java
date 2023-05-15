@@ -3,15 +3,17 @@ package com.conference.project.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 public class Reservation {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @ManyToOne @JsonBackReference
+    @ManyToOne //@JsonBackReference
     private Customer customer;
-    @ManyToOne @JsonBackReference
+    @ManyToOne //@JsonBackReference
     private Lecture lecture;
 
     public Reservation() {
@@ -55,7 +57,7 @@ public class Reservation {
 
         Reservation that = (Reservation) o;
 
-        return id != null ? id.equals(that.id) : that.id == null;
+        return Objects.equals(id, that.id);
     }
 
     @Override

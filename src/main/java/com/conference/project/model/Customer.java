@@ -1,10 +1,11 @@
 package com.conference.project.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Customer {
@@ -14,16 +15,16 @@ public class Customer {
     private String login;
     private String email;
 
-    @OneToMany(mappedBy = "customer") @JsonManagedReference
+    @OneToMany(mappedBy = "customer") @JsonIgnore//@JsonManagedReference
     private Collection<Reservation> reservations = new ArrayList<>();
 
-
-    public Customer() {
-    }
 
     public Customer(String login, String email) {
         this.login = login;
         this.email = email;
+    }
+
+    public Customer() {
     }
 
     public Integer getId() {
@@ -75,7 +76,7 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        return id != null ? id.equals(customer.id) : customer.id == null;
+        return Objects.equals(id, customer.id);
     }
 
     @Override

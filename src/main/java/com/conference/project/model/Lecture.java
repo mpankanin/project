@@ -1,11 +1,13 @@
 package com.conference.project.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Lecture {
@@ -14,10 +16,11 @@ public class Lecture {
     private Integer id;
     private String title;
 
-    @OneToMany(mappedBy = "lecture") @JsonManagedReference
+    @OneToMany(mappedBy = "lecture") @JsonIgnore
     private Collection<Reservation> reservations = new ArrayList<>();
 
-    @ManyToOne @JsonBackReference
+    @ManyToOne
+    //@JsonBackReference
     private ThematicPath thematicPath;
 
 
@@ -75,7 +78,7 @@ public class Lecture {
 
         Lecture lecture = (Lecture) o;
 
-        return id != null ? id.equals(lecture.id) : lecture.id == null;
+        return Objects.equals(id, lecture.id);
     }
 
     @Override

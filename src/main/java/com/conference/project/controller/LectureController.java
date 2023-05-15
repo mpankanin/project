@@ -14,7 +14,7 @@ import java.util.List;
 public class LectureController {
 
     @Autowired
-    private LectureRepository lectureRepository;
+    LectureRepository lectureRepository;
 
 
     @GetMapping("/lectures")
