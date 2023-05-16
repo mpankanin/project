@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+@Table(name = "ThematicPath")
 public class ThematicPath {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String description;
 
-    @OneToMany(mappedBy = "thematicPath") @JsonIgnore//@JsonManagedReference
+    @OneToMany @JoinColumn(name = "thematicPath_id")
     private Collection<Lecture> lectures = new ArrayList<>();
 
 
@@ -25,11 +26,11 @@ public class ThematicPath {
         this.description = description;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,6 +50,14 @@ public class ThematicPath {
         this.lectures = lectures;
     }
 
+    public void addLecture(Lecture lecture){
+        lectures.add(lecture);
+    }
+
+    public void removeLecture(Lecture lecture){
+        lectures.remove(lecture);
+    }
+
     @Override
     public String toString() {
         return "ThematicPath{" +
@@ -56,21 +65,6 @@ public class ThematicPath {
                 ", description='" + description + '\'' +
                 ", lectures=" + lectures +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ThematicPath that = (ThematicPath) o;
-
-        return id != null ? id.equals(that.id) : that.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
     }
 
 }

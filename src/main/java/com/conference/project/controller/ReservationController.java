@@ -1,33 +1,17 @@
 package com.conference.project.controller;
 
 
-
-import com.conference.project.model.Reservation;
-import com.conference.project.repository.ReservationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.conference.project.service.ReservationService;
 import org.springframework.web.bind.annotation.RestController;
-
 
 
 @RestController
 public class ReservationController {
 
+    private final ReservationService reservationService;
 
-    @Autowired
-    ReservationRepository reservationRepository;
-
-
-
-
-
-
-
-
-
-
-
+    public ReservationController(ReservationService reservationService) {
+        this.reservationService = reservationService;
+    }
 
 }

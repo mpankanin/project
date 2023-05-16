@@ -2,6 +2,8 @@ package com.conference.project.repository;
 
 import com.conference.project.model.Lecture;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface LectureRepository extends JpaRepository<Lecture, Integer> {
+@Repository
+public interface LectureRepository extends JpaRepository<Lecture, Long> {
 }

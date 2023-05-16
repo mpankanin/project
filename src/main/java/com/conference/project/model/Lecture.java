@@ -9,17 +9,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+@Table(name = "Lecture")
 public class Lecture {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String title;
 
-    @OneToMany(mappedBy = "lecture") @JsonIgnore
+    @OneToMany @JoinColumn(name = "lecture_id")
     private Collection<Reservation> reservations = new ArrayList<>();
 
     @ManyToOne
-    //@JsonBackReference
     private ThematicPath thematicPath;
 
 
@@ -30,12 +30,12 @@ public class Lecture {
         this.title = title;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer lectureId) {
-        this.id = lectureId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -62,27 +62,20 @@ public class Lecture {
         this.thematicPath = thematicPath;
     }
 
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+    }
+
+    public void removeReservation(Reservation reservation){
+        reservations.remove(reservation);
+    }
+
     @Override
     public String toString() {
         return "Lecture{" +
                 "lectureId=" + id +
                 ", title='" + title + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Lecture lecture = (Lecture) o;
-
-        return id != null ? id.equals(lecture.id) : lecture.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
     }
 
 }

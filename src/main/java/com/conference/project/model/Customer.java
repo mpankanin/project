@@ -7,14 +7,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+@Table(name = "Customer")
 public class Customer {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String login;
     private String email;
 
-    @OneToMany(mappedBy = "customer") @JsonIgnore//@JsonManagedReference
+    @OneToMany @JoinColumn(name = "customer_id")
     private Collection<Reservation> reservations = new ArrayList<>();
 
 
@@ -26,11 +27,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,6 +59,14 @@ public class Customer {
         this.reservations = reservations;
     }
 
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+    }
+
+    public void removeReservation(Reservation reservation){
+        reservations.remove(reservation);
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -66,21 +75,6 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", reservations=" + reservations +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Customer customer = (Customer) o;
-
-        return id != null ? id.equals(customer.id) : customer.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
     }
 
 }

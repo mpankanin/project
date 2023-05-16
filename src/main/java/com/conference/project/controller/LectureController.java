@@ -2,8 +2,7 @@ package com.conference.project.controller;
 
 
 import com.conference.project.model.Lecture;
-import com.conference.project.repository.LectureRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.conference.project.service.LectureService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,14 +12,12 @@ import java.util.List;
 @RestController
 public class LectureController {
 
-    @Autowired
-    LectureRepository lectureRepository;
+    private final LectureService lectureService;
 
-
-    @GetMapping("/lectures")
-    public List<Lecture> getLectures(){
-        return lectureRepository.findAll();
+    public LectureController(LectureService lectureService) {
+        this.lectureService = lectureService;
     }
+
 
 
 }

@@ -4,25 +4,26 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Reservation")
 public class Reservation {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
-    @ManyToOne //@JsonBackReference
+    @ManyToOne
     private Customer customer;
-    @ManyToOne //@JsonBackReference
+    @ManyToOne
     private Lecture lecture;
 
     public Reservation() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer resId) {
-        this.id = resId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Customer getCustomer() {
@@ -46,21 +47,6 @@ public class Reservation {
         return "Reservation{" +
                 "resId=" + id +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Reservation that = (Reservation) o;
-
-        return id != null ? id.equals(that.id) : that.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
     }
 
 }

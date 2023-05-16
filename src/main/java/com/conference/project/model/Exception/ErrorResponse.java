@@ -1,4 +1,4 @@
-package com.conference.project.model;
+package com.conference.project.model.Exception;
 
 public class ErrorResponse {
 
@@ -38,4 +38,5 @@ public class ErrorResponse {
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
     }
+
 }
