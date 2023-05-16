@@ -1,4 +1,4 @@
-package com.conference.project.model.Exception;
+package com.conference.project.model.exception;
 
 public class LectureNotFoundException extends RuntimeException{
 

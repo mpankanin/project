@@ -15,7 +15,7 @@ public class ThematicPath {
     private Long id;
     private String description;
 
-    @OneToMany @JoinColumn(name = "thematicPath_id")
+    @OneToMany @JoinColumn(name = "thematic_path_id")
     private Collection<Lecture> lectures = new ArrayList<>();
 
 

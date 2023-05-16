@@ -1,7 +1,7 @@
 package com.conference.project.service;
 
-import com.conference.project.model.Exception.LectureNotFoundException;
-import com.conference.project.model.Exception.ReservationAlreadyAssignedException;
+import com.conference.project.model.exception.LectureNotFoundException;
+import com.conference.project.model.exception.ReservationAlreadyAssignedException;
 import com.conference.project.model.Lecture;
 import com.conference.project.model.Reservation;
 import com.conference.project.repository.LectureRepository;

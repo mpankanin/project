@@ -1,10 +1,8 @@
 package com.conference.project.service;
 
-import com.conference.project.model.Customer;
-import com.conference.project.model.Exception.LectureAlreadyAssignedException;
-import com.conference.project.model.Exception.ThematicPathNotFoundException;
+import com.conference.project.model.exception.LectureAlreadyAssignedException;
+import com.conference.project.model.exception.ThematicPathNotFoundException;
 import com.conference.project.model.Lecture;
-import com.conference.project.model.Reservation;
 import com.conference.project.model.ThematicPath;
 import com.conference.project.repository.ThematicPathRepository;
 import org.springframework.stereotype.Service;

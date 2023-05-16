@@ -1,6 +1,6 @@
 package com.conference.project.service;
 
-import com.conference.project.model.Exception.ReservationNotFoundException;
+import com.conference.project.model.exception.ReservationNotFoundException;
 import com.conference.project.model.Reservation;
 import com.conference.project.repository.ReservationRepository;
 import org.springframework.stereotype.Service;

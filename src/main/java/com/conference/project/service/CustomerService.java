@@ -1,9 +1,8 @@
 package com.conference.project.service;
 
 import com.conference.project.model.Customer;
-import com.conference.project.model.Exception.CustomerNotFoundException;
-import com.conference.project.model.Exception.ReservationAlreadyAssignedException;
-import com.conference.project.model.Lecture;
+import com.conference.project.model.exception.CustomerNotFoundException;
+import com.conference.project.model.exception.ReservationAlreadyAssignedException;
 import com.conference.project.model.Reservation;
 import com.conference.project.repository.CustomerRepository;
 import org.springframework.stereotype.Service;

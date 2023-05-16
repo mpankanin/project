@@ -1,16 +1,12 @@
 package com.conference.project.controller;
 
 
-import com.conference.project.model.Customer;
-import com.conference.project.model.Exception.CustomerAlreadyAssignedException;
 import com.conference.project.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Objects;
-
 
 @RestController
+@RequestMapping("/customers")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -18,6 +14,7 @@ public class CustomerController {
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
+
 
 
 
