@@ -8,6 +8,7 @@ import com.conference.project.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -33,6 +34,13 @@ public class CustomerService {
         return customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException("Not found: " + id + " customer."));
     }
 
+    public Customer getCustomer(String login){
+        Optional<Customer> optional = customerRepository.findAll().stream().filter(c -> c.getLogin().equals(login)).findFirst();
+        if(optional.isEmpty())
+            throw new CustomerNotFoundException("Invalid login");
+        return optional.get();
+    }
+
     public Customer deleteCustomer(Long id){
         Customer customer = getCustomer(id);
         customerRepository.delete(customer);
@@ -48,6 +56,7 @@ public class CustomerService {
     public Customer editCustomerEmail(Long id, String email){
         Customer customer = getCustomer(id);
         customer.setEmail(email);
+        customerRepository.save(customer);
         return customer;
     }
 

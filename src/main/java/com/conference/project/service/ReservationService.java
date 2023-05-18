@@ -20,7 +20,7 @@ public class ReservationService {
         return reservationRepository.save(reservation);
     }
 
-    public List<Reservation> getReservations(Long id){
+    public List<Reservation> getReservations(){
         return reservationRepository.findAll();
     }
 

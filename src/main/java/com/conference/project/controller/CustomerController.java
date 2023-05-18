@@ -3,7 +3,9 @@ package com.conference.project.controller;
 
 import com.conference.project.model.Customer;
 import com.conference.project.model.dto.CustomerPlainDto;
+import com.conference.project.model.dto.ReservationDto;
 import com.conference.project.model.exception.CustomerAlreadyAssignedException;
+import com.conference.project.model.exception.CustomerNotFoundException;
 import com.conference.project.service.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -38,6 +41,18 @@ public class CustomerController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @GetMapping(value = "{login}")
+    public ResponseEntity<List<ReservationDto>> getCustomerReservations(@PathVariable String login){
+        Customer customer = customerService.getCustomer(login);
+        return new ResponseEntity<>(customer.getReservations().stream().map(ReservationDto::from).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    @PutMapping(value = "{id}")
+    public ResponseEntity<CustomerPlainDto> updateEmail(@PathVariable final Long id,
+                                                        @RequestBody final CustomerPlainDto customerPlainDto){
+     Customer customer = customerService.editCustomerEmail(id, customerPlainDto.getEmail());
+     return new ResponseEntity<>(CustomerPlainDto.from(customer), HttpStatus.OK);
+    }
 
 
     /*

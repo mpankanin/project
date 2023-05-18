@@ -1,14 +1,13 @@
 package com.conference.project.controller;
 
 
-import com.conference.project.model.ThematicPath;
-import com.conference.project.repository.ThematicPathRepository;
+
 import com.conference.project.service.ThematicPathService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+
 
 
 @RestController
@@ -18,6 +17,16 @@ public class ThematicPathController {
 
     public ThematicPathController(ThematicPathService thematicPathService) {
         this.thematicPathService = thematicPathService;
+    }
+
+
+    @GetMapping("/conference-agenda")
+    public ResponseEntity<String> getConferenceAgenda(){
+
+        
+
+
+        return null
     }
 
 

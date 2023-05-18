@@ -1,5 +1,6 @@
 package com.conference.project.bootstrap;
 
+
 import com.conference.project.model.Customer;
 import com.conference.project.model.Lecture;
 import com.conference.project.model.ThematicPath;
@@ -67,7 +68,6 @@ public class BootStrapData implements CommandLineRunner {
 
         Customer customer1 = new Customer("andrzej", "andrzej.martines@gmail.com");
         customerRepository.save(customer1);
-
 
     }
 }
