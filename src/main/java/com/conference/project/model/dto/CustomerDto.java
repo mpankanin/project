@@ -1,7 +1,6 @@
 package com.conference.project.model.dto;
 
 import com.conference.project.model.Customer;
-import com.conference.project.model.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;

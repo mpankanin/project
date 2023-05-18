@@ -1,5 +1,6 @@
 package com.conference.project.model;
 
+import com.conference.project.model.dto.CustomerPlainDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -65,6 +66,13 @@ public class Customer {
 
     public void removeReservation(Reservation reservation){
         reservations.remove(reservation);
+    }
+
+    public static Customer from(CustomerPlainDto customerPlainDto){
+        Customer customer = new Customer();
+        customer.setLogin(customerPlainDto.getLogin());
+        customer.setEmail(customerPlainDto.getEmail());
+        return customer;
     }
 
     @Override
