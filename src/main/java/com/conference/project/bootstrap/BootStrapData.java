@@ -11,6 +11,7 @@ import com.conference.project.repository.ThematicPathRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+
 import java.util.Arrays;
 
 @Component
@@ -38,25 +39,25 @@ public class BootStrapData implements CommandLineRunner {
 
         thematicPathRepository.saveAll(Arrays.asList(thematicPath1, thematicPath2, thematicPath3));
 
-        Lecture lecture11 = new Lecture("What do we know about ai");
+        Lecture lecture11 = new Lecture("What do we know about ai", "2023-04-26 10:00", "2023-04-26 11:45");
         lecture11.setThematicPath(thematicPath1);
-        Lecture lecture12 = new Lecture("The risks");
+        Lecture lecture12 = new Lecture("The risks", "2023-04-26 12:00", "2023-04-26 13:45");
         lecture12.setThematicPath(thematicPath1);
-        Lecture lecture13 = new Lecture("Directions of the development");
+        Lecture lecture13 = new Lecture("Directions of the development", "2023-04-26 14:00", "2023-04-26 15:45");
         lecture13.setThematicPath(thematicPath1);
 
-        Lecture lecture21 = new Lecture("Common mistakes");
+        Lecture lecture21 = new Lecture("Common mistakes", "2023-04-26 10:00", "2023-04-26 11:45");
         lecture21.setThematicPath(thematicPath2);
-        Lecture lecture22 = new Lecture("How to avoid making mistakes");
+        Lecture lecture22 = new Lecture("How to avoid making mistakes", "2023-04-26 12:00", "2023-04-26 13:45");
         lecture22.setThematicPath(thematicPath2);
-        Lecture lecture23 = new Lecture("Exercises that helps to improve our focus");
+        Lecture lecture23 = new Lecture("Exercises that helps to improve our focus", "2023-04-26 14:00", "2023-04-26 15:45");
         lecture23.setThematicPath(thematicPath2);
 
-        Lecture lecture31 = new Lecture("The IT market");
+        Lecture lecture31 = new Lecture("The IT market", "2023-04-26 10:00", "2023-04-26 11:45");
         lecture31.setThematicPath(thematicPath3);
-        Lecture lecture32 = new Lecture("New technologies");
+        Lecture lecture32 = new Lecture("New technologies", "2023-04-26 12:00", "2023-04-26 13:45");
         lecture32.setThematicPath(thematicPath3);
-        Lecture lecture33 = new Lecture("The groundbreaking tools");
+        Lecture lecture33 = new Lecture("The groundbreaking tools", "2023-04-26 14:00", "2023-04-26 15:45");
         lecture33.setThematicPath(thematicPath3);
 
         thematicPath1.getLectures().addAll(Arrays.asList(lecture11, lecture12, lecture13));

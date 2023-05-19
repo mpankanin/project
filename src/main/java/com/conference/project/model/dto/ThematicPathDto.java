@@ -10,7 +10,7 @@ public class ThematicPathDto {
 
     private Long id;
     private String description;
-    private List<LectureDto> lecturesDto = new ArrayList<>();
+    private List<LectureAgendaDto> lectures = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -28,19 +28,19 @@ public class ThematicPathDto {
         this.description = description;
     }
 
-    public List<LectureDto> getLecturesDto() {
-        return lecturesDto;
+    public List<LectureAgendaDto> getLectures() {
+        return lectures;
     }
 
-    public void setLecturesDto(List<LectureDto> lecturesDto) {
-        this.lecturesDto = lecturesDto;
+    public void setLectures(List<LectureAgendaDto> lectures) {
+        this.lectures = lectures;
     }
 
     public static ThematicPathDto from(ThematicPath thematicPath){
         ThematicPathDto thematicPathDto = new ThematicPathDto();
         thematicPathDto.setId(thematicPath.getId());
         thematicPathDto.setDescription(thematicPath.getDescription());
-        thematicPathDto.setLecturesDto(thematicPath.getLectures().stream().map(LectureDto::from).collect(Collectors.toList()));
+        thematicPathDto.setLectures(thematicPath.getLectures().stream().map(LectureAgendaDto::from).collect(Collectors.toList()));
         return thematicPathDto;
     }
 }

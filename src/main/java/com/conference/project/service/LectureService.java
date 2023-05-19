@@ -62,4 +62,11 @@ public class LectureService {
         return lecture;
     }
 
+    public boolean lectureIsAvailable(Long lectureId){
+        Lecture lecture = lectureRepository
+                .findById(lectureId)
+                .orElseThrow(()-> new LectureNotFoundException("Invalid id number"));
+        return lecture.getReservations().size() < 5;
+    }
+
 }

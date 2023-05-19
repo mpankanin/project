@@ -18,6 +18,11 @@ public class Reservation {
     public Reservation() {
     }
 
+    public Reservation(Customer customer, Lecture lecture) {
+        this.customer = customer;
+        this.lecture = lecture;
+    }
+
     public Long getId() {
         return id;
     }
@@ -42,11 +47,13 @@ public class Reservation {
         this.lecture = lecture;
     }
 
+
     @Override
     public String toString() {
         return "Reservation{" +
-                "resId=" + id +
+                "id=" + id +
+                ", customer=" + customer +
+                ", lecture=" + lecture +
                 '}';
     }
-
 }

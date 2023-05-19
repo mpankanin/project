@@ -16,8 +16,8 @@ public class ReservationService {
         this.reservationRepository = reservationRepository;
     }
 
-    public Reservation addReservation(Reservation reservation){
-        return reservationRepository.save(reservation);
+    public void addReservation(Reservation reservation){
+        reservationRepository.save(reservation);
     }
 
     public List<Reservation> getReservations(){

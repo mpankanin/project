@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Table(name = "Lecture")
@@ -13,6 +14,8 @@ public class Lecture {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
+    private String startDate;
+    private String endDate;
 
     @OneToMany @JoinColumn(name = "lecture_id")
     private Collection<Reservation> reservations = new ArrayList<>();
@@ -24,8 +27,10 @@ public class Lecture {
     public Lecture() {
     }
 
-    public Lecture(String title) {
+    public Lecture(String title, String start, String end) {
         this.title = title;
+        this.startDate = start;
+        this.endDate = end;
     }
 
     public Long getId() {
@@ -42,6 +47,22 @@ public class Lecture {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public Collection<Reservation> getReservations() {

@@ -4,6 +4,7 @@ package com.conference.project.controller;
 import com.conference.project.model.Customer;
 import com.conference.project.model.dto.CustomerPlainDto;
 import com.conference.project.model.dto.ReservationDto;
+import com.conference.project.model.dto.ReservationPlainDto;
 import com.conference.project.model.exception.CustomerAlreadyAssignedException;
 import com.conference.project.model.exception.CustomerNotFoundException;
 import com.conference.project.service.CustomerService;
@@ -42,9 +43,9 @@ public class CustomerController {
     }
 
     @GetMapping(value = "{login}")
-    public ResponseEntity<List<ReservationDto>> getCustomerReservations(@PathVariable String login){
+    public ResponseEntity<List<ReservationPlainDto>> getCustomerReservations(@PathVariable String login){
         Customer customer = customerService.getCustomer(login);
-        return new ResponseEntity<>(customer.getReservations().stream().map(ReservationDto::from).collect(Collectors.toList()), HttpStatus.OK);
+        return new ResponseEntity<>(customer.getReservations().stream().map(ReservationPlainDto::from).collect(Collectors.toList()), HttpStatus.OK);
     }
 
     @PutMapping(value = "{id}")
