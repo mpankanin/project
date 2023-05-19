@@ -7,6 +7,8 @@ public class LecturePlainDto {
     private Long id;
     private String title;
     private Long thematic_path_id;
+    private String start;
+    private String end;
 
 
     public Long getId() {
@@ -33,11 +35,29 @@ public class LecturePlainDto {
         this.thematic_path_id = thematic_path_id;
     }
 
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
+
     public static LecturePlainDto from(Lecture lecture){
         LecturePlainDto lecturePlainDto = new LecturePlainDto();
         lecturePlainDto.setId(lecture.getId());
         lecturePlainDto.setTitle(lecture.getTitle());
         lecturePlainDto.setThematic_path_id(lecture.getThematicPath().getId());
+        lecturePlainDto.setStart(lecture.getStartDate());
+        lecturePlainDto.setEnd(lecture.getEndDate());
         return lecturePlainDto;
     }
 }

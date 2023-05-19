@@ -5,18 +5,23 @@ import com.conference.project.model.Customer;
 import com.conference.project.model.Lecture;
 import com.conference.project.model.Reservation;
 import com.conference.project.model.dto.ReservationDto;
+import com.conference.project.model.dto.ReservationPlainDto;
 import com.conference.project.model.exception.CustomerAlreadyAssignedException;
 import com.conference.project.model.exception.LectureAlreadyAssignedException;
 import com.conference.project.service.CustomerService;
 import com.conference.project.service.LectureService;
 import com.conference.project.service.ReservationService;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Objects;
-import java.util.Optional;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -34,46 +39,63 @@ public class ReservationController {
     }
 
     @PostMapping(value = "{lectureId}")
-    public ResponseEntity<ReservationDto> addReservation(@PathVariable Long lectureId, @RequestBody Customer customer){
-        System.out.println("----LINE 1----");
-        if(!lectureService.lectureIsAvailable(lectureId))
-            throw new LectureAlreadyAssignedException("Lecture is fully booked");
-        System.out.println("----LINE 2----");
+    public ResponseEntity<ReservationPlainDto> addReservation(@PathVariable Long lectureId, @RequestBody Customer customer){
 
         Lecture lecture = lectureService.getLecture(lectureId);
+
+        if(!lecture.isAvailable())
+            throw new LectureAlreadyAssignedException("Lecture is fully booked");
+
         Reservation reservation;
         Customer theCustomer;
+
         Optional<Customer> optional = customerService.getCustomers()
                 .stream()
                 .filter(c -> c.getLogin().equals(customer.getLogin()))
                 .filter(c -> c.getEmail().equals(customer.getEmail()))
                 .findFirst();
 
-        System.out.println("----LINE 3----");
+
         if(optional.isEmpty()){
-            optional = customerService.getCustomers()
+            optional = customerService.getCustomers()                                //check if provided customer login is correct
                     .stream()
                     .filter(c -> c.getLogin().equals(customer.getLogin()))
                     .findFirst();
 
-            System.out.println("----LINE 4----");
             if(optional.isPresent())
                 throw new CustomerAlreadyAssignedException("Login already exists");
-        }
 
-        System.out.println("----LINE 5----");
-        if(optional.isEmpty()){
             theCustomer = customerService.addCustomer(customer);
         }else
             theCustomer = customerService.getCustomer(optional.get().getId());
 
-        System.out.println("----LINE 6----");
-        System.out.println(theCustomer);
-        System.out.println(lecture);
-        reservation = new Reservation(theCustomer, lecture);
-        System.out.println(reservation);
-        reservationService.addReservation(reservation);
-        return new ResponseEntity<>(ReservationDto.from(reservation), HttpStatus.OK);
+        if(theCustomer.getReservations().stream().anyMatch(r -> Objects.equals(r.getLecture().getStartDate(), lecture.getStartDate())))
+            throw new CustomerAlreadyAssignedException("Customer can be signed only for one lecture in the same time");
+
+
+        reservation = reservationService.addReservation(new Reservation(theCustomer, lecture));
+
+
+        try {
+            reservationService.sendEmail(lecture, theCustomer.getEmail());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<>(ReservationPlainDto.from(reservation), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ReservationDto>> getReservations(){
+        List<Reservation> reservationList = reservationService.getReservations();
+        List<ReservationDto> reservationsDto = reservationList.stream().map(ReservationDto::from).collect(Collectors.toList());
+        return new ResponseEntity<>(reservationsDto, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "{login}")
+    public ResponseEntity<List<ReservationPlainDto>> getCustomerReservations(@PathVariable String login){
+        Customer customer = customerService.getCustomer(login);
+        return new ResponseEntity<>(customer.getReservations().stream().map(ReservationPlainDto::from).collect(Collectors.toList()), HttpStatus.OK);
     }
 
 

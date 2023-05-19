@@ -6,41 +6,41 @@ import java.util.Objects;
 
 public class ReservationDto {
 
-    private Long id;
-    private CustomerDto customerDto;
-    private LectureDto lectureDto;
+    private Long reservation_id;
+    private CustomerPlainDto customer;
+    private LecturePlainDto lecture;
 
-    public Long getId() {
-        return id;
+    public Long getReservation_id() {
+        return reservation_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setReservation_id(Long reservation_id) {
+        this.reservation_id = reservation_id;
     }
 
-    public CustomerDto getCustomerDto() {
-        return customerDto;
+    public CustomerPlainDto getCustomer() {
+        return customer;
     }
 
-    public void setCustomerDto(CustomerDto customerDto) {
-        this.customerDto = customerDto;
+    public void setCustomer(CustomerPlainDto customer) {
+        this.customer = customer;
     }
 
-    public LectureDto getLectureDto() {
-        return lectureDto;
+    public LecturePlainDto getLecture() {
+        return lecture;
     }
 
-    public void setLectureDto(LectureDto lectureDto) {
-        this.lectureDto = lectureDto;
+    public void setLecture(LecturePlainDto lecture) {
+        this.lecture = lecture;
     }
 
     public static ReservationDto from(Reservation reservation){
         ReservationDto reservationDto = new ReservationDto();
-        reservationDto.setId(reservation.getId());
+        reservationDto.setReservation_id(reservation.getId());
         if(Objects.nonNull(reservation.getCustomer()))
-            reservationDto.setCustomerDto(CustomerDto.from(reservation.getCustomer()));
+            reservationDto.setCustomer(CustomerPlainDto.from(reservation.getCustomer()));
         if(Objects.nonNull(reservation.getLecture()))
-            reservationDto.setLectureDto(LectureDto.from(reservation.getLecture()));
+            reservationDto.setLecture(LecturePlainDto.from(reservation.getLecture()));
         return reservationDto;
     }
 }

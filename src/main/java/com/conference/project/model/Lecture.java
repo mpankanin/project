@@ -89,6 +89,10 @@ public class Lecture {
         reservations.remove(reservation);
     }
 
+    public boolean isAvailable(){
+        return reservations.size() < 5;
+    }
+
     @Override
     public String toString() {
         return "Lecture{" +

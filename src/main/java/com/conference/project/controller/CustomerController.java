@@ -42,11 +42,6 @@ public class CustomerController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping(value = "{login}")
-    public ResponseEntity<List<ReservationPlainDto>> getCustomerReservations(@PathVariable String login){
-        Customer customer = customerService.getCustomer(login);
-        return new ResponseEntity<>(customer.getReservations().stream().map(ReservationPlainDto::from).collect(Collectors.toList()), HttpStatus.OK);
-    }
 
     @PutMapping(value = "{id}")
     public ResponseEntity<CustomerPlainDto> updateEmail(@PathVariable final Long id,
