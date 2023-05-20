@@ -1,0 +1,120 @@
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T22:23:25.173934600
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=3, title='Directions of the development'}
+Date of reservation: 2023-05-20T22:23:27.895919100
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=4, title='Common mistakes'}
+Date of reservation: 2023-05-20T22:23:30.331524700
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=4, title='Common mistakes'}
+Date of reservation: 2023-05-20T22:26:36.749974700
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=3, title='Directions of the development'}
+Date of reservation: 2023-05-20T22:26:39.761835700
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T22:26:42.535481200
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation deleted: Lecture{lectureId=4, title='Common mistakes'}
+Date of reservation: 2023-05-20T22:27:37.371689200
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T23:05:54.635133400
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=3, title='Directions of the development'}
+Date of reservation: 2023-05-20T23:05:58.417855300
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=4, title='Common mistakes'}
+Date of reservation: 2023-05-20T23:06:01.482999500
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=1, title='What do we know about ai'}
+Date of reservation: 2023-05-20T23:08:25.758011800
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T23:08:31.649819400
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=3, title='Directions of the development'}
+Date of reservation: 2023-05-20T23:08:34.483809400
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=3, title='Directions of the development'}
+Date of reservation: 2023-05-20T23:08:39.674103100
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T23:08:42.761545300
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=1, title='What do we know about ai'}
+Date of reservation: 2023-05-20T23:08:45.712140100
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=1, title='What do we know about ai'}
+Date of reservation: 2023-05-20T23:08:50.623921800
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T23:08:53.795974
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=3, title='Directions of the development'}
+Date of reservation: 2023-05-20T23:08:56.715724300
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=3, title='Directions of the development'}
+Date of reservation: 2023-05-20T23:09:01.481250100
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T23:09:04.438555300
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=1, title='What do we know about ai'}
+Date of reservation: 2023-05-20T23:09:07.614748100
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=1, title='What do we know about ai'}
+Date of reservation: 2023-05-20T23:09:12.037316900
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T23:15:19.109964300
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T23:17:23.349684600
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=1, title='What do we know about ai'}
+Date of reservation: 2023-05-20T23:17:58.675816800
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=3, title='Directions of the development'}
+Date of reservation: 2023-05-20T23:18:01.306692300
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=1, title='What do we know about ai'}
+Date of reservation: 2023-05-20T23:19:22.288596900
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=2, title='The risks'}
+Date of reservation: 2023-05-20T23:19:25.323519500
+Recipient: marek.kmardkolomny@gmail.com
+
+Reservation successful: Lecture{lectureId=3, title='Directions of the development'}
+Date of reservation: 2023-05-20T23:19:27.815457
+Recipient: marek.kmardkolomny@gmail.com
+

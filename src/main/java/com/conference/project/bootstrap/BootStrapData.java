@@ -12,6 +12,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 
 @Component
@@ -32,6 +35,7 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
 
         ThematicPath thematicPath1 = new ThematicPath("Artificial intelligence and machine learning");
         ThematicPath thematicPath2 = new ThematicPath("Common mistakes");

@@ -4,6 +4,7 @@ package com.conference.project.controller;
 
 import com.conference.project.model.ThematicPath;
 import com.conference.project.model.dto.ThematicPathDto;
+import com.conference.project.model.dto.ThematicPathSummaryDto;
 import com.conference.project.service.ThematicPathService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,11 @@ public class ThematicPathController {
         return new ResponseEntity<>(pathList.stream().map(ThematicPathDto::from).collect(Collectors.toList()), HttpStatus.OK);
     }
 
+    @GetMapping("/paths/summary")
+    public ResponseEntity<List<ThematicPathSummaryDto>> getSummaryPaths(){
+        List<ThematicPath> pathList = thematicPathService.getThematicPaths();
+        return new ResponseEntity<>(pathList.stream().map(ThematicPathSummaryDto::from).collect(Collectors.toList()), HttpStatus.OK);
+    }
 
 
 

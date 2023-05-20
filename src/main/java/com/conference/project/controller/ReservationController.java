@@ -8,6 +8,7 @@ import com.conference.project.model.dto.ReservationDto;
 import com.conference.project.model.dto.ReservationPlainDto;
 import com.conference.project.model.exception.CustomerAlreadyAssignedException;
 import com.conference.project.model.exception.LectureAlreadyAssignedException;
+import com.conference.project.model.exception.ReservationNotFoundException;
 import com.conference.project.service.CustomerService;
 import com.conference.project.service.LectureService;
 import com.conference.project.service.ReservationService;
@@ -17,9 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -77,7 +75,7 @@ public class ReservationController {
 
 
         try {
-            reservationService.sendEmail(lecture, theCustomer.getEmail());
+            reservationService.sendEmailAdd(lecture, theCustomer.getEmail());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,6 +94,22 @@ public class ReservationController {
     public ResponseEntity<List<ReservationPlainDto>> getCustomerReservations(@PathVariable String login){
         Customer customer = customerService.getCustomer(login);
         return new ResponseEntity<>(customer.getReservations().stream().map(ReservationPlainDto::from).collect(Collectors.toList()), HttpStatus.OK);
+    }
+
+    @GetMapping("{login}/{resId}")
+    public ResponseEntity<ReservationPlainDto> deleteReservation(@PathVariable String login, @PathVariable Long resId){
+        Customer customer = customerService.getCustomer(login);
+        Reservation reservation = reservationService.getReservation(resId);
+        if(!reservation.getCustomer().getId().equals(customer.getId()))
+            throw new ReservationNotFoundException("Customer doesn't have reservation matching provided data");
+
+        try {
+            reservationService.sendEmailCancel(reservation.getLecture(), customer.getEmail());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<>(ReservationPlainDto.from(reservationService.deleteReservation(resId)), HttpStatus.OK);
     }
 
 
