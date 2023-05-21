@@ -36,7 +36,7 @@ public class ReservationController {
         this.lectureService = lectureService;
     }
 
-    @PostMapping(value = "{lectureId}")
+    @PostMapping("/{lectureId}")
     public ResponseEntity<ReservationPlainDto> addReservation(@PathVariable Long lectureId, @RequestBody Customer customer){
 
         Lecture lecture = lectureService.getLecture(lectureId);
@@ -52,7 +52,6 @@ public class ReservationController {
                 .filter(c -> c.getLogin().equals(customer.getLogin()))
                 .filter(c -> c.getEmail().equals(customer.getEmail()))
                 .findFirst();
-
 
         if(optional.isEmpty()){
             optional = customerService.getCustomers()                                //check if provided customer login is correct
@@ -70,9 +69,7 @@ public class ReservationController {
         if(theCustomer.getReservations().stream().anyMatch(r -> Objects.equals(r.getLecture().getStartDate(), lecture.getStartDate())))
             throw new CustomerAlreadyAssignedException("Customer can be signed only for one lecture in the same time");
 
-
         reservation = reservationService.addReservation(new Reservation(theCustomer, lecture));
-
 
         try {
             reservationService.sendEmailAdd(lecture, theCustomer.getEmail());
@@ -90,7 +87,7 @@ public class ReservationController {
         return new ResponseEntity<>(reservationsDto, HttpStatus.OK);
     }
 
-    @GetMapping(value = "{login}")
+    @GetMapping("/{login}")
     public ResponseEntity<List<ReservationPlainDto>> getCustomerReservations(@PathVariable String login){
         Customer customer = customerService.getCustomer(login);
         return new ResponseEntity<>(customer.getReservations().stream().map(ReservationPlainDto::from).collect(Collectors.toList()), HttpStatus.OK);
@@ -111,8 +108,5 @@ public class ReservationController {
 
         return new ResponseEntity<>(ReservationPlainDto.from(reservationService.deleteReservation(resId)), HttpStatus.OK);
     }
-
-
-
 
 }

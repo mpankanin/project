@@ -1,7 +1,8 @@
 package com.conference.project.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "Reservation")
@@ -47,7 +48,6 @@ public class Reservation {
         this.lecture = lecture;
     }
 
-
     @Override
     public String toString() {
         return "Reservation{" +
@@ -56,4 +56,5 @@ public class Reservation {
                 ", lecture=" + lecture +
                 '}';
     }
+
 }

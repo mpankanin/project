@@ -39,4 +39,5 @@ public class ThematicPathSummaryDto {
         thematicPathPlainDto.setAttendance((thematicPath.getLectures().stream().mapToInt(l -> l.getReservations().size()).sum()) * ((float)100/15) + "%");
         return thematicPathPlainDto;
     }
+
 }

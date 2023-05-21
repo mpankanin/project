@@ -60,4 +60,5 @@ public class LecturePlainDto {
         lecturePlainDto.setEnd(lecture.getEndDate());
         return lecturePlainDto;
     }
+
 }

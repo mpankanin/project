@@ -1,7 +1,6 @@
 package com.conference.project.model.exception;
 
 
-
 public class CustomerNotFoundException extends RuntimeException{
 
     public CustomerNotFoundException(String message) {

@@ -43,4 +43,5 @@ public class ThematicPathDto {
         thematicPathDto.setLectures(thematicPath.getLectures().stream().map(LectureAgendaDto::from).collect(Collectors.toList()));
         return thematicPathDto;
     }
+
 }

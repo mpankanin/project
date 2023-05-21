@@ -1,5 +1,6 @@
 package com.conference.project.model.exception;
 
+
 public class CustomerAlreadyAssignedException extends RuntimeException{
 
     public CustomerAlreadyAssignedException(String message) {
@@ -13,4 +14,5 @@ public class CustomerAlreadyAssignedException extends RuntimeException{
     public CustomerAlreadyAssignedException(Throwable cause) {
         super(cause);
     }
+
 }

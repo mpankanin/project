@@ -30,4 +30,5 @@ public class ReservationPlainDto {
         reservationPlainDto.setLecture(LecturePlainDto.from(reservation.getLecture()));
         return reservationPlainDto;
     }
+
 }

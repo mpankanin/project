@@ -1,5 +1,6 @@
 package com.conference.project.model.exception;
 
+
 public class ReservationNotFoundException extends RuntimeException{
 
     public ReservationNotFoundException(String message) {
@@ -13,4 +14,5 @@ public class ReservationNotFoundException extends RuntimeException{
     public ReservationNotFoundException(Throwable cause) {
         super(cause);
     }
+
 }

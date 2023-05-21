@@ -1,18 +1,18 @@
 package com.conference.project.model.exception;
 
+
 public class ErrorResponse {
 
     private int status;
     private String message;
-    private long timeStamp;
+    private String time;
 
     public ErrorResponse() {
     }
 
-    public ErrorResponse(int status, String message, long timeStamp) {
+    public ErrorResponse(int status, String message) {
         this.status = status;
-        this.message = message;
-        this.timeStamp = timeStamp;
+        this.message = message;;
     }
 
     public int getStatus() {
@@ -31,12 +31,12 @@ public class ErrorResponse {
         this.message = message;
     }
 
-    public long getTimeStamp() {
-        return timeStamp;
+    public String getTime() {
+        return time;
     }
 
-    public void setTimeStamp(long timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setTime(String time) {
+        this.time = time;
     }
 
 }

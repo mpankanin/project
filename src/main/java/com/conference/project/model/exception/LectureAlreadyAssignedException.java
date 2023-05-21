@@ -1,5 +1,6 @@
 package com.conference.project.model.exception;
 
+
 public class LectureAlreadyAssignedException extends RuntimeException{
 
     public LectureAlreadyAssignedException(String message) {
@@ -13,4 +14,5 @@ public class LectureAlreadyAssignedException extends RuntimeException{
     public LectureAlreadyAssignedException(Throwable cause) {
         super(cause);
     }
+
 }

@@ -1,7 +1,6 @@
 package com.conference.project.controller;
 
 
-
 import com.conference.project.model.ThematicPath;
 import com.conference.project.model.dto.ThematicPathDto;
 import com.conference.project.model.dto.ThematicPathSummaryDto;
@@ -20,7 +19,6 @@ public class ThematicPathController {
 
     private final ThematicPathService thematicPathService;
 
-
     public ThematicPathController(ThematicPathService thematicPathService) {
         this.thematicPathService = thematicPathService;
     }
@@ -36,7 +34,5 @@ public class ThematicPathController {
         List<ThematicPath> pathList = thematicPathService.getThematicPaths();
         return new ResponseEntity<>(pathList.stream().map(ThematicPathSummaryDto::from).collect(Collectors.toList()), HttpStatus.OK);
     }
-
-
 
 }

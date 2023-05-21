@@ -1,5 +1,6 @@
 package com.conference.project.service;
 
+
 import com.conference.project.model.exception.LectureNotFoundException;
 import com.conference.project.model.exception.ReservationAlreadyAssignedException;
 import com.conference.project.model.Lecture;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+
 
 @Service
 public class LectureService {

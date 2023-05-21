@@ -1,11 +1,12 @@
 package com.conference.project.model;
 
+
 import com.conference.project.model.dto.CustomerPlainDto;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 
 @Entity
 @Table(name = "Customer")

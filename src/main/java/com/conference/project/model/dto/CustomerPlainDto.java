@@ -54,5 +54,4 @@ public class CustomerPlainDto {
         return customerPlainDto;
     }
 
-
 }

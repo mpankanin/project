@@ -1,5 +1,6 @@
 package com.conference.project.model.exception;
 
+
 public class ReservationAlreadyAssignedException extends RuntimeException{
 
     public ReservationAlreadyAssignedException(String message) {
@@ -13,4 +14,5 @@ public class ReservationAlreadyAssignedException extends RuntimeException{
     public ReservationAlreadyAssignedException(Throwable cause) {
         super(cause);
     }
+
 }

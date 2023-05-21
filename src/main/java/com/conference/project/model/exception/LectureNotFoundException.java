@@ -1,5 +1,6 @@
 package com.conference.project.model.exception;
 
+
 public class LectureNotFoundException extends RuntimeException{
 
     public LectureNotFoundException(String message) {
@@ -13,4 +14,5 @@ public class LectureNotFoundException extends RuntimeException{
     public LectureNotFoundException(Throwable cause) {
         super(cause);
     }
+
 }

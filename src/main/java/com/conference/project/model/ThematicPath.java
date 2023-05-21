@@ -1,11 +1,11 @@
 package com.conference.project.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 
 @Entity
 @Table(name = "ThematicPath")
@@ -17,7 +17,6 @@ public class ThematicPath {
 
     @OneToMany @JoinColumn(name = "thematic_path_id")
     private Collection<Lecture> lectures = new ArrayList<>();
-
 
     public ThematicPath() {
     }

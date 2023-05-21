@@ -38,4 +38,5 @@ public class LectureController {
         List<Lecture> lectureList = lectureService.getLectures();
         return new ResponseEntity<>(lectureList.stream().map(LectureSummaryDto::from).collect(Collectors.toList()), HttpStatus.OK);
     }
+
 }

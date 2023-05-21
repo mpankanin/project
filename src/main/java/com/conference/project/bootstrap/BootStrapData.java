@@ -6,36 +6,28 @@ import com.conference.project.model.Lecture;
 import com.conference.project.model.ThematicPath;
 import com.conference.project.repository.CustomerRepository;
 import com.conference.project.repository.LectureRepository;
-import com.conference.project.repository.ReservationRepository;
 import com.conference.project.repository.ThematicPathRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
 
-
     private final CustomerRepository customerRepository;
     private final LectureRepository lectureRepository;
-    private final ReservationRepository reservationRepository;
     private final ThematicPathRepository thematicPathRepository;
 
-    public BootStrapData(CustomerRepository customerRepository, LectureRepository lectureRepository, ReservationRepository reservationRepository, ThematicPathRepository thematicPathRepository) {
+    public BootStrapData(CustomerRepository customerRepository, LectureRepository lectureRepository, ThematicPathRepository thematicPathRepository) {
         this.customerRepository = customerRepository;
         this.lectureRepository = lectureRepository;
-        this.reservationRepository = reservationRepository;
         this.thematicPathRepository = thematicPathRepository;
     }
 
     @Override
-    public void run(String... args) throws Exception {
-
+    public void run(String... args) {
 
         ThematicPath thematicPath1 = new ThematicPath("Artificial intelligence and machine learning");
         ThematicPath thematicPath2 = new ThematicPath("Common mistakes");
@@ -75,4 +67,5 @@ public class BootStrapData implements CommandLineRunner {
         customerRepository.save(customer1);
 
     }
+
 }
