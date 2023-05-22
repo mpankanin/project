@@ -54,7 +54,7 @@ public class ReservationController {
                 .findFirst();
 
         if(optional.isEmpty()){
-            optional = customerService.getCustomers()                                //check if provided customer login is correct
+            optional = customerService.getCustomers()
                     .stream()
                     .filter(c -> c.getLogin().equals(customer.getLogin()))
                     .findFirst();
