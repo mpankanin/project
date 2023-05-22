@@ -93,7 +93,7 @@ public class ReservationController {
         return new ResponseEntity<>(customer.getReservations().stream().map(ReservationPlainDto::from).collect(Collectors.toList()), HttpStatus.OK);
     }
 
-    @GetMapping("{login}/{resId}")
+    @DeleteMapping("{login}/{resId}")
     public ResponseEntity<ReservationPlainDto> deleteReservation(@PathVariable String login, @PathVariable Long resId){
         Customer customer = customerService.getCustomer(login);
         Reservation reservation = reservationService.getReservation(resId);
