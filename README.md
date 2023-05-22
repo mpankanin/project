@@ -1,5 +1,5 @@
 # project
-CONFERENCE-SII
+CONFERENCE
 
 Projekt - Miłosz Pankanin
 
@@ -13,7 +13,7 @@ Projekt był moją pierwszą stycznością ze spring bootem, także historię co
 
 Projekt powstał przy użyciu java wersja 17, oraz bazy danych H2.
 Konsola bazy danych dostępna jest pod standardowym url(/h2-console)
-jdbc:h2:mem:conferenceDb / login: conference / password: sii
+jdbc:h2:mem:conferenceDb / login: conference / password: conf
 
 
 W celu testowania używałem strony:
